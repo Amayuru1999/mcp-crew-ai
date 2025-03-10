@@ -1,4 +1,6 @@
-<center><img src="https://github.com/crewAIInc/crewAI/blob/main/docs/crewai_logo.png" alt="CrewAI Logo" width="200" /></center>
+<div align="center">
+  <img src="https://github.com/crewAIInc/crewAI/blob/main/docs/crewai_logo.png" alt="CrewAI Logo" />
+</div>
 
 # MCP Crew AI Server
 
@@ -16,7 +18,7 @@ MCP Crew AI Server is a lightweight Python-based server designed to run, manage 
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://your.repo.url/mcp-crew-ai.git
+   git clonehttps://github.com/adam-paterson/mcp-crew-ai.git
    cd mcp-crew-ai
    ```
 

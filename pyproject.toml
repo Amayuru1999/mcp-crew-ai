@@ -1,7 +1,7 @@
 [project]
 name = "mcp-crew-ai"
 version = "0.1.0"
-description = "Add your description here"
+description = "MCP Crew AI Server - Run CrewAI agents through Model Context Protocol"
 readme = "README.md"
 authors = [
     { name = "adam.paterson", email = "hello@adampaterson.co.uk" }
@@ -9,8 +9,26 @@ authors = [
 requires-python = ">=3.11"
 dependencies = [
     "mcp[cli]>=1.3.0",
+    "crewai>=0.8.0",
+    "pyyaml>=6.0",
+    "importlib-metadata>=6.0.0",
 ]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_crew_ai"]
+
+[project.scripts]
+mcp-crew-ai = "mcp_crew_ai.cli:main"
+
+[project.entry-points.uv]
+mcp-crew-ai = "mcp_crew_ai.cli:main"
+mcp-crew-ai-server = "mcp_crew_ai.server_cmd:main"
+
+[project.urls]
+Homepage = "https://github.com/adam-paterson/mcp-crew-ai"
+Repository = "https://github.com/adam-paterson/mcp-crew-ai"
+Issues = "https://github.com/adam-paterson/mcp-crew-ai/issues"

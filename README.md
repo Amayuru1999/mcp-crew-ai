@@ -15,21 +15,34 @@ MCP Crew AI Server is a lightweight Python-based server designed to run, manage 
 
 ## Installation
 
-1. **Clone the Repository:**
+There are several ways to install the MCP Crew AI server:
 
-   ```bash
-   git clonehttps://github.com/adam-paterson/mcp-crew-ai.git
-   cd mcp-crew-ai
-   ```
+### Option 1: Install from PyPI (Recommended)
 
-2. **Install Dependencies:**
-   Ensure you have Python 3.10+ installed, then install the required packages:
+```bash
+pip install mcp-crew-ai
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Option 2: Install from GitHub
 
-   *This will install the MCP SDK, CrewAI, PyYAML and any other dependencies.*
+```bash
+pip install git+https://github.com/adam-paterson/mcp-crew-ai.git
+```
+
+### Option 3: Clone and Install
+
+```bash
+git clone https://github.com/adam-paterson/mcp-crew-ai.git
+cd mcp-crew-ai
+pip install -e .
+```
+
+### Requirements
+
+- Python 3.11+
+- MCP SDK
+- CrewAI
+- PyYAML
 
 ## Configuration
 
@@ -53,24 +66,55 @@ write_stories:
   description: >
     Write an engaging zoo update capturing the day's highlights.
   expected_output: 5 engaging stories
-  agent_name: zookeeper
+  agent: zookeeper
+  output_file: zoo_report.md
 ```
 
 ## Usage
 
-To run the server with the default configuration files located in the project directory:
+Once installed, you can run the MCP CrewAI server using either of these methods:
+
+### Standard Python Command
 
 ```bash
-mcp dev server.py
+mcp-crew-ai --agents path/to/agents.yml --tasks path/to/tasks.yml
 ```
 
-To run the server with custom configuration files, pass the paths using the `--agents` and `--tasks` options:
+### Using UV Execution (uvx)
+
+For a more streamlined experience, you can use the UV execution command:
 
 ```bash
-mcp dev server.py -- --agents /path/to/agents.yml --tasks /path/to/tasks.yml
+uvx mcp-crew-ai --agents path/to/agents.yml --tasks path/to/tasks.yml
 ```
 
-The server will start in STDIO mode and expose the `run_workflow` tool, which executes your configured CrewAI workflow.
+Or run just the server directly:
+
+```bash
+uvx mcp-crew-ai-server
+```
+
+This will start the server using default configuration from environment variables.
+
+### Command Line Options
+
+- `--agents`: Path to the agents YAML file (required)
+- `--tasks`: Path to the tasks YAML file (required)
+- `--topic`: The main topic for the crew to work on (default: "Artificial Intelligence")
+- `--process`: Process type to use (choices: "sequential" or "hierarchical", default: "sequential")
+- `--verbose`: Enable verbose output
+- `--variables`: JSON string or path to JSON file with additional variables to replace in YAML files
+- `--version`: Show version information and exit
+
+### Advanced Usage
+
+You can also provide additional variables to be used in your YAML templates:
+
+```bash
+mcp-crew-ai --agents examples/agents.yml --tasks examples/tasks.yml --topic "Machine Learning" --variables '{"year": 2025, "focus": "deep learning"}'
+```
+
+These variables will replace placeholders in your YAML files. For example, `{topic}` will be replaced with "Machine Learning" and `{year}` with "2025".
 
 ## Contributing
 

@@ -16,3 +16,10 @@ reporting_task:
     Formatted as markdown without '```'
   agent: reporting_analyst
   output_file: report.md
+
+write_stories:
+  description: >
+    Write an engaging zoo update capturing the day's highlights.
+  expected_output: 5 engaging stories
+  agent: zookeeper
+  output_file: zoo_report.md

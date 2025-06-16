@@ -77,7 +77,7 @@ Once installed, you can run the MCP CrewAI server using either of these methods:
 ### Standard Python Command
 
 ```bash
-mcp-crew-ai --agents path/to/agents.yml --tasks path/to/tasks.yml
+mcp-crew-ai --agents examples/agents.yml --tasks examples/tasks.yml
 ```
 
 ### Using UV Execution (uvx)
@@ -85,7 +85,7 @@ mcp-crew-ai --agents path/to/agents.yml --tasks path/to/tasks.yml
 For a more streamlined experience, you can use the UV execution command:
 
 ```bash
-uvx mcp-crew-ai --agents path/to/agents.yml --tasks path/to/tasks.yml
+uvx mcp-crew-ai --agents examples/agents.yml --tasks examples/tasks.yml
 ```
 
 Or run just the server directly:
